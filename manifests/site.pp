@@ -31,4 +31,5 @@ node default {
 }
 file { '/tmp/test' :
   ensure => present,
+  mode => 0770,
 }
