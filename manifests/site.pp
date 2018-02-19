@@ -30,6 +30,6 @@ node default {
   #   class { 'my_class': }
 }
 file { '/tmp/test' :
-  ensure => present,
-  mode   => '0770',
+  ensure => absent,
+#  mode   => '0770',
 }
