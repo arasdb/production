@@ -1,3 +1,3 @@
 file { '/tmp/test' :
-  ensure => present'
+  ensure => absent,
 }
