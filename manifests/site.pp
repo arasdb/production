@@ -29,3 +29,7 @@ node default {
   # Example:
   #   class { 'my_class': }
 }
+file { '/tmp/test' :
+  ensure => present'
+}
+
