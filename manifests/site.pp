@@ -29,7 +29,3 @@ node default {
   # Example:
   #   class { 'my_class': }
 }
-file { '/tmp/test' :
-  ensure => absent,
-#  mode   => '0770',
-}
