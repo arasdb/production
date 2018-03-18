@@ -2,6 +2,11 @@
 
 class default::users {
 
+group {'arkitectpro':
+  ensure => present,
+  gid    => 1111,
+}
+
 user { 'arkitectpro':
   ensure     => present,
   uid        => 1111,
@@ -13,13 +18,4 @@ user { 'arkitectpro':
   subscribe  => Group['arkitectpro'],
 }
 
-user {'arkitect':
-  ensure     => absent,
-  managehome => true,
-}
-
-user {'kthoutam':
-  ensure     => absent,
-  managehome => true,
-}
 }

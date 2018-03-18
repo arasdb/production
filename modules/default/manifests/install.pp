@@ -1,51 +1,27 @@
-#Trying basic bits here
+#Installation of the packages go here
 
 class default::install {
 
-package { ['java-1.7.0-openjdk']:}
+package { ['java-1.7.0-openjdk', 'tree', 'wget', 'git', 'unzip', 'ntp']:}
 
 group {'arkitectpro':
   ensure => present,
   gid    => 1111,
 }
-################ Moved below bits to users.pp file #######################  
-#user { 'arkitectpro':
-#  ensure     => present,
-#  uid        => 1111,
-#  gid        => 1111,
-#  home       => '/home/arkitectpro',
-#  expiry     => absent,
-#  managehome => true,
-#  password   => '$1$zZk1WfZr$5DePUa5mMPADKSns2bYaV0',
-#  subscribe  => Group['arkitectpro'],
-#}
-
-#user {'arkitect':
-#  ensure     => absent,
-#  managehome => true,
-#}
-
-#user {'kthoutam':
-#  ensure     => absent,
-#  managehome => true,
-#}
-
-package {['tree', 'wget', 'git', 'unzip', 'ntp']:}
-
-file {'/etc/motd':
-  source  => "puppet:///modules/default/etc/motd_${hostname}",
-  owner   => root,
-  group   => root,
-  mode    => '0644',
-#  content => '
-#	This file is managed by Puppet Enterprise
-#  	server.arkitectpro.com
-#  	dnsserver.arkitectpro.com
-#  	pxeserver.arkitectpro.com',
-}
 
 service {'ntpd':
   ensure  => running,
   enable  => true,
+}
+# This class is for installation of httpd packages on all systems
+
+package {'httpd':
+  ensure => latest,
+  notify => Service['httpd'],
+}
+
+service {'httpd':
+  ensure => running,
+  enable => true,
 }
 }
