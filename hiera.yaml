@@ -13,3 +13,5 @@ hierarchy:
   - name: "Other YAML hierarchy levels"
     paths:
       - "common.yaml"
+#Aravind Goli
+#puppet_enterprise::profile::console::proxy::http_redirect::enable_http_redirect: false
